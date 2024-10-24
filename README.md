@@ -146,6 +146,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For any questions, suggestions, or issues, please reach out to the project maintainers at:
 
-- **Mail**: rutwiz27@gmail,com
+- **Mail**: rutwiz27@gmail.com
 
 ---
