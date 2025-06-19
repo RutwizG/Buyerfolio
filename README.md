@@ -1,81 +1,90 @@
-🏡 Buyer Folio Inc. – Real Estate Agent Matching Platform (Data Engineering Project)
-📌 Project Overview
-This project showcases an end-to-end data engineering pipeline and platform for Buyer Folio Inc., aimed at building a real estate agent-client matching system. The solution emphasizes data ingestion, processing, pipeline orchestration, model integration, and dashboarding, all aligned with real-world scalability.
 
-The core goal is to build a robust data platform that powers intelligent agent-client matchmaking using clean, structured datasets and optimized ML pipelines—supporting real-time decision-making, visualizations, and business insights.
+# 🏡 Buyer Folio Inc. – Real Estate Agent Matching Platform (Data Engineering Project)
 
-🚀 Features
-🗃️ Data Repository
-Structured, scalable database to store:
+## 📌 Project Overview
 
-Agent profiles
+In the dynamic world of real estate, matching the right agent to a buyer isn't just a matter of availability — it’s about understanding preferences, specialties, location expertise, and proven success. Buyer Folio Inc. aims to revolutionize this space by creating an intelligent, scalable agent-client matching platform powered by data engineering and machine learning.
 
-Service areas
+This project focuses on the **end-to-end development of a data-driven platform** that automates agent-client pairing based on structured data, advanced analytics, and personalized insights. Our goal was to build a system that not only automates matchmaking but also provides real-time metrics on system performance and client satisfaction through interactive dashboards.
 
-Client feedback & reviews
+---
 
-Transaction & engagement data
+## ❗ Business Problem
 
-ETL pipelines built to ingest and normalize real estate data from multiple sources
+Traditional real estate platforms rely heavily on manual agent recommendations or broad filters that often mismatch clients. This results in:
+- Wasted time for both buyers and agents.
+- Poor client satisfaction and agent conversion rates.
+- Lack of transparency in performance and feedback loops.
 
-🔁 ETL Pipeline
-Raw JSON/CSV data processed using Python (Pandas, NumPy) and stored in SQL/NoSQL data stores
+**Buyer Folio's challenge:** Build a system that intelligently matches clients to agents based on data — using historical performance, geographic expertise, specialty, and feedback — while maintaining scalability, automation, and visibility.
 
-Automated transformations triggered via Airflow (or crontabs), generating clean, analytics-ready datasets
+---
 
-🧠 Machine Learning Integration
-Preprocessed data fed into ML pipelines (XGBoost, Random Forest) to predict best-fit agents for clients
+## ⚙️ How We Solved It
 
-Models trained on historical transactions and client preferences
+We approached this by designing a full-stack data engineering system from ingestion to insight delivery:
 
-⚙️ Matching Algorithm
-Multi-criteria scoring algorithm combines:
+### 1. **Data Collection**
+Collected agent profiles, client preferences, and transaction history via:
+- CSV and JSON flat files
+- Simulated API calls to external real estate services
+- User review and feedback forms
 
-Agent specialties
+### 2. **ETL Pipelines**
+Built using **Python, Pandas, and NumPy**:
+- Extracts raw data from multiple sources
+- Transforms the data (cleaning, normalization, feature engineering)
+- Loads it into **Amazon S3** and optionally **Azure Blob Storage**
 
-Ratings
+### 3. **Data Modeling**
+Structured the processed data into schemas registered with **AWS Glue** and queried through **Athena**. Data was optimized for analytical queries with proper partitioning and metadata management.
 
-Geographic expertise
+### 4. **Machine Learning Layer**
+- Used **Random Forest** and **XGBoost** to train models that predict agent-client compatibility.
+- Key features: location overlap, specialty match, average response time, ratings, transaction volume.
 
-Buyer preferences
+### 5. **Matching Algorithm**
+A weighted score system evaluated:
+- Specialties (e.g., luxury homes, commercial, first-time buyers)
+- Ratings and reviews
+- Location coverage
+- Response time and conversion rates
 
-Stored output integrated with the front-end application layer via API
+### 6. **KPI Dashboard**
+Created with **Looker** and **Power BI**, the dashboard visualizes:
+- Match success rates
+- Active client sessions
+- Agent performance and responsiveness
+- Overall satisfaction metrics
 
-📊 Interactive KPI Dashboard
-Built using Looker and Power BI
+---
 
-Tracks:
+## 🧪 Issues Faced
 
-Agent performance
+- **Data Quality:** Inconsistent formats and missing values across datasets required robust preprocessing.
+- **Model Bias:** Early models favored agents with higher volume rather than quality; retraining with adjusted weights fixed this.
+- **Latency in Matching:** Real-time matching required re-architecting our logic into lightweight APIs.
+- **Deployment Complexity:** Multi-cloud architecture demanded proper configuration and CI/CD integration.
 
-Match success rate
+---
 
-Client engagement
+## 🛠️ Technologies Used
 
-System usage metrics in real-time
+- **Languages**: Python, SQL
+- **Libraries**: Pandas, NumPy, Scikit-learn, XGBoost, Matplotlib, Seaborn
+- **Cloud**: AWS S3, AWS Glue, Athena, Azure Blob Storage
+- **Pipeline Orchestration**: Airflow (planned), cron jobs (current)
+- **Dashboards**: Looker, Power BI
+- **Version Control**: Git, GitHub
+- **Testing**: PyTest
+- **Documentation**: Jupyter Notebooks, Sphinx
 
-🧪 Testing & QA
-Unit and pipeline tests written in PyTest
+---
 
-Logs stored in structured folders under /tests
+## 🔁 Project Structure
 
-🛠️ Tech Stack
-Category	Tools / Technologies
-Languages	Python, SQL
-Libraries	Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
-Cloud & Storage	AWS S3, AWS Glue, Athena, Azure Blob Storage
-ML Algorithms	XGBoost, Random Forest
-Pipeline Orchestration	Airflow (or Cron Jobs)
-Visualization	Looker, Power BI
-Version Control	Git, GitHub
-UI Framework	React.js / Django
-Testing	PyTest
-Documentation	Jupyter Notebooks, Sphinx
-
-📂 Project Structure
-pgsql
-Copy
-Edit
+```
+real-estate-matching-platform/
 ├── data/
 │   ├── raw/
 │   ├── processed/
@@ -87,89 +96,26 @@ Edit
 ├── dashboards/
 │   ├── looker/
 │   └── powerbi/
-├── tests/
 ├── notebooks/
+├── tests/
 ├── requirements.txt
-├── README.md
-└── LICENSE
-⚙️ Setup Instructions
-Clone the Repository
+└── README.md
+```
 
-bash
-Copy
-Edit
-git clone https://github.com/rutwizg/real-estate-matching-platform.git
-cd real-estate-matching-platform
-Create a Virtual Environment
+---
 
-bash
-Copy
-Edit
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install Dependencies
+## 🧪 Testing
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Set Up Database
+All transformation scripts and model components are tested using `pytest`. Test logs and results are stored under `/tests`.
 
-Follow database_setup.md to configure local or cloud-based data storage
+---
 
-Run the Pipeline
+## 📜 License
 
-bash
-Copy
-Edit
-python scripts/extract/extract_spotify_data.py
-python scripts/transform/transform_agents.py
-python scripts/load/load_to_s3.py
-Run Tests
+This project is under the MIT License. See the `LICENSE` file for details.
 
-bash
-Copy
-Edit
-pytest
-🧠 How It Works
-Data Ingestion: Pulls agent, transaction, and review data from various sources using APIs and flat files
+---
 
-Transformation: Applies business rules and prepares data for analysis using Pandas
+## 📬 Contact
 
-Storage: Saves data to AWS S3 or Azure Blob; registers schema in AWS Glue
-
-Querying: Enables SQL analytics via Athena on top of S3
-
-Machine Learning: Predicts agent success rates and matches clients using historical trends
-
-Dashboard: Displays KPIs to stakeholders in Looker/Power BI
-
-📈 KPIs Tracked
-Agent match accuracy
-
-Customer satisfaction score
-
-Agent engagement rate
-
-Number of successful transactions
-
-Daily active users
-
-🤝 Contributing
-We welcome community contributions!
-
-Fork this repository
-
-Create a branch: git checkout -b feature-name
-
-Commit your changes: git commit -m "Add feature"
-
-Push to your fork: git push origin feature-name
-
-Open a pull request!
-
-📜 License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-📬 Contact
-Feel free to reach out for collaboration or questions:
+📧 rutwiz27@gmail.com
