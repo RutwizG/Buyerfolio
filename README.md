@@ -98,7 +98,7 @@ Clone the Repository
 bash
 Copy
 Edit
-git clone https://github.com/your-username/real-estate-matching-platform.git
+git clone https://github.com/rutwizg/real-estate-matching-platform.git
 cd real-estate-matching-platform
 Create a Virtual Environment
 
