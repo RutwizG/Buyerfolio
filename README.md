@@ -118,4 +118,4 @@ This project is under the MIT License. See the `LICENSE` file for details.
 
 ## 📬 Contact
 
-📧 rutwiz27@gmail.com
+📧 rutwizg@gmail.com
