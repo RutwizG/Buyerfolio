@@ -111,11 +111,8 @@ real-estate-platform/
 
 ## 📬 Contact
 
-Built with 💻 by **Rutwiz G.**  
+Still building for BuyerFolio 💻 by **Rutwiz Gullipalli.**  
 📧 rutwizg@gmail.com
 
 ---
 
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE).
