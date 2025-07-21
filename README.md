@@ -1,117 +1,121 @@
-Buyer Folio Inc. – Real Estate Agent Matching Platform (Software Engineering Project)
-📌 Project Overview
-Buyer Folio Inc. set out to transform the real estate landscape by developing a scalable web-based platform that automatically matches buyers with real estate agents. The system’s core objective was to provide personalized, data-informed agent recommendations based on buyer preferences, location expertise, response times, and historical success metrics — all while ensuring real-time responsiveness, modular backend architecture, and clean API contracts.
+# 🏡 Buyer Folio Inc. – Real Estate Agent Matching Platform
 
-The project involved full-stack backend system design, RESTful service development, API-driven integrations, and robust analytics layers to power an intuitive and responsive user experience.
+A scalable backend system that intelligently matches real estate buyers with agents based on location, expertise, feedback, and availability. Built with modular microservices, RESTful APIs, and integrated machine learning models to drive intelligent recommendations and business visibility.
 
-❗ Business Problem
-Legacy real estate systems rely on static filters or manual agent assignments, which often lead to:
+---
 
-Inefficient match quality between buyers and agents
+## 📌 Project Overview
 
-Delayed response times and missed leads
+Buyer Folio aims to transform the agent-client matchmaking process through a robust software platform that balances automation, performance, and intelligence. We designed a data-driven backend system to:
 
-Low transparency in performance metrics
+- Dynamically match clients with optimal agents
+- Support seamless API integrations
+- Visualize KPIs for business and operational insights
+- Enable scalable infrastructure and CI/CD workflows
 
-Lack of scalable backend workflows for intelligent matchmaking
+---
 
-Buyer Folio’s objective was to engineer a software system that delivers intelligent matchmaking powered by microservices, integrates seamlessly with external APIs, and adheres to CI/CD principles — enabling fast, accurate, and high-quality real estate connections.
+## ❗ Business Problem
 
-⚙️ System Design & Architecture
-Microservice-Based Backend
+Traditional real estate systems rely on manual matching or static filters, leading to:
 
-Architected microservices using Python (FastAPI) and Java (Spring Boot).
+- ❌ Poor match quality and low conversions  
+- ❌ Wasted time for buyers and agents  
+- ❌ Lack of transparency and performance tracking
 
-Deployed on AWS EC2, exposed through API Gateway, and orchestrated via Docker containers.
+**Goal**: Automate and optimize the matchmaking workflow using intelligent scoring, real-time APIs, and feedback-driven models.
 
-Stateless design ensured horizontal scalability and fault isolation.
+---
 
-API Integrations
+## ⚙️ System Architecture
 
-Developed internal RESTful APIs for user registration, agent search, and feedback ingestion.
+User ➝ API Gateway ➝ Microservices (Spring Boot)
+⬇︎
+Match Engine ↔ XGBoost
+⬇︎
+AWS S3 / DynamoDB
+⬇︎
+Dashboard (Power BI)
 
-Integrated mock third-party APIs (Zillow-style) for external listings, transaction records, and user data enrichment.
+---
 
-Data & Matching Logic
+## 🧠 Matching Engine
 
-Designed a matching engine as a backend module with modular plug-in architecture.
+- Feature engineering: location match, agent specialty, ratings, response time, transaction volume
+- Models: `XGBoost`, `Random Forest`, and rule-based fallback
+- Weighted score system with real-time scoring endpoint
 
-Used SQL-based heuristics to calculate dynamic match scores based on user location, agent specialization, response time, and client feedback.
+---
 
-Applied XGBoost and Random Forest within the backend service to enhance match accuracy using trained ML models.
+## 🛠️ Tech Stack
 
-Infrastructure & Automation
+| Category         | Tools / Technologies |
+|------------------|----------------------|
+| **Languages**      | Python, Java, SQL |
+| **Frameworks**     | FastAPI, Spring Boot |
+| **Databases**      | DynamoDB |
+| **ML Libraries**   | Scikit-learn, XGBoost, Pandas |
+| **Cloud & DevOps** | AWS (EC2, Lambda, S3), Docker, Terraform, Jenkins, GitHub Actions |
+| **Dashboards**     | Looker, Power BI |
+| **Testing**        | PyTest, Swagger, Postman |
+| **Project Mgmt**   | Agile/Scrum, Jira |
 
-Infrastructure as code using Terraform for provisioning AWS resources.
+---
 
-CI/CD pipeline setup using GitHub Actions and Jenkins, with automated testing and linting stages.
+## 📊 Dashboards
 
-Secrets and environment management through AWS Parameter Store.
+Dashboards provide:
 
-📊 Performance Dashboards & Observability
-Developed admin dashboards using Looker and Power BI, integrated via API endpoints for:
+- Agent performance scores
+- Real-time session activity
+- Match success metrics
+- Client satisfaction analytics
 
-Live tracking of agent-client engagement
+---
 
-Real-time match success rate visualization
+## 🔁 Project Structure
 
-Aggregated analytics on location heatmaps and feedback scores
-
-Integrated logging with AWS CloudWatch and monitoring using Prometheus + Grafana (planned)
-
-🧪 Issues Tackled
-Service Bottlenecks: Initial monolith endpoints were re-engineered into granular microservices to enhance latency and modularity.
-
-Model Bias: Bias toward high-volume agents in initial scoring corrected by normalizing against quality feedback.
-
-Deployment Rollbacks: Automated versioned deployments and rollback mechanisms added using Docker tags and GitHub Actions.
-
-Data Quality Gaps: Implemented data validation schemas using Pydantic and enforced through backend services.
-
-🛠️ Technologies Used
-Languages: Python, Java, SQL
-
-Frameworks: FastAPI, Spring Boot, Jinja2
-
-Cloud: AWS EC2, S3, API Gateway, Lambda
-
-Infrastructure & DevOps: Terraform, Docker, Jenkins, GitHub Actions
-
-Data & ML: XGBoost, Scikit-learn, Pandas, PySpark
-
-Databases: PostgreSQL, DynamoDB
-
-Dashboards: Looker, Power BI
-
-Testing: PyTest, Postman, Swagger
-
-Project Management: Agile/Scrum, Jira
-
-🔁 Project Structure
-go
-Copy
-Edit
 real-estate-platform/
 ├── backend/
-│   ├── services/
-│   ├── models/
-│   ├── routers/
+│ ├── services/
+│ ├── models/
+│ ├── routers/
 ├── infrastructure/
-│   ├── terraform/
-│   └── docker/
+│ ├── terraform/
+│ └── docker/
 ├── api_docs/
-├── tests/
 ├── dashboards/
+├── tests/
 ├── notebooks/
 ├── requirements.txt
 └── README.md
-⚡ Outcomes
-Achieved a 40% increase in agent-client engagement rate via intelligent scoring.
 
-Reduced average response time to under 500ms across service endpoints.
+---
 
-Integrated ML-based feedback loop improved match quality by 32% in A/B testing.
+## 🧪 Testing & CI/CD
 
-📬 Contact
+- Unit tests with `pytest`
+- API testing with `Postman`
+- CI/CD pipeline using `Jenkins`
+- Dockerized microservices with tagged version rollbacks
+
+---
+
+## ⚡ Outcomes
+
+- 🔼 40% increase in engagement using intelligent scoring
+- ⚡ Sub-500ms latency on core API calls
+- 🎯 +32% accuracy improvement in match predictions after ML integration
+
+---
+
+## 📬 Contact
+
+Built with 💻 by **Rutwiz G.**  
 📧 rutwizg@gmail.com
 
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
